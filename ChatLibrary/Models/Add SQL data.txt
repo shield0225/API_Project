@@ -1,0 +1,38 @@
+CREATE DATABASE ChatAPIDB;
+
+CREATE TABLE Users (
+    UserId INT PRIMARY KEY,
+    Email VARCHAR(255) NOT NULL,
+    Password VARCHAR(255) NOT NULL
+);
+
+INSERT INTO Users (UserId, Email, Password) VALUES (1, 'user1@example.com', 'password123');
+INSERT INTO Users (UserId, Email, Password) VALUES (2, 'user2@example.com', 'password456');
+
+CREATE TABLE Chatrooms (
+    ChatroomId INT PRIMARY KEY,
+    AccessibleUserId INT NOT NULL,
+    FOREIGN KEY (AccessibleUserId) REFERENCES Users(UserId)
+);
+
+INSERT INTO Chatrooms (ChatroomId, AccessibleUserId) VALUES (1, 1);
+INSERT INTO Chatrooms (ChatroomId, AccessibleUserId) VALUES (2, 2);
+
+DROP TABLE Chats;
+
+CREATE TABLE Chats (
+    ChatId INT PRIMARY KEY,
+    ChattedUserId INT NOT NULL,
+    ChatroomId INT NOT NULL,
+    Date DATETIME NOT NULL,
+    ChatContent TEXT,
+    Path TEXT,
+    FOREIGN KEY (ChattedUserId) REFERENCES Users(UserId),
+    FOREIGN KEY (ChatroomId) REFERENCES Chatrooms(ChatroomId)
+);
+
+INSERT INTO Chats (ChatId, ChattedUserId, ChatroomId, Date, ChatContent, Path) 
+VALUES (1, 1, 1, '2023-11-22 10:00:00', 'Hello, this is a test message', '');
+
+INSERT INTO Chats (ChatId, ChattedUserId, ChatroomId, Date, ChatContent, Path) 
+VALUES (2, 2, 2, '2023-11-22 10:05:00', 'Replying to test message', '');
