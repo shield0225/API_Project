@@ -4,7 +4,7 @@
     <TargetFramework>net6.0</TargetFramework>
     <Nullable>enable</Nullable>
     <ImplicitUsings>enable</ImplicitUsings>
-    <DockerDefaultTargetOS>Windows</DockerDefaultTargetOS>
+    <DockerDefaultTargetOS>Linux</DockerDefaultTargetOS>
     <DockerfileContext>..\ChatLibrary</DockerfileContext>
     <UserSecretsId>b73e4990-9b87-4100-81aa-f6efe67f534f</UserSecretsId>
   </PropertyGroup>
